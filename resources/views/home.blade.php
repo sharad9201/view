@@ -15,6 +15,23 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+
+                    <div modal-dialog modal-dialog-scrollable>
+                        <table>
+                            <tr>
+                                <td>Registered user</td>
+                                <td>Their email</td>
+
+                            </tr>
+                            @foreach ($guests as $guest)
+                            <tr>
+                                <td>{{$guest['name']}}</td>
+                                <td>{{$guest['email']}}</td>
+
+                            </tr>
+                            @endforeach
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
