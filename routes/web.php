@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GuestController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.name');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home.name');
+Route::get('/home', [App\Http\Controllers\GuestController::class, 'index'])->name('home.name')->middleware('auth');
+Route::get('/guestlogin', [App\Http\Controllers\GuestController::class, 'create'])->middleware('auth')->name('guestlogin.name');
+// Route::post('/guestlogin', [App\Http\Controllers\GuestController::class, 'store'])->middleware('auth');
+
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::resource('/guestlogin',GuestController::class)->only('store');
+
+});

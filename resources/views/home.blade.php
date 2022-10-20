@@ -2,36 +2,39 @@
 
 @section('content')
 <div class="container">
+    <div>
+        <a href="{{ route('guestlogin.name') }}" class=" btn btn-primary">Create a Guest User </a>
+    </div>
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
                 <div class="card-body">
                     @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-
-                    <div modal-dialog modal-dialog-scrollable>
-                        <table>
-                            <tr>
-                                <td>Registered user</td>
-                                <td>Their email</td>
-
-                            </tr>
-                            @foreach ($guests as $guest)
-                            <tr>
-                                <td>{{$guest['name']}}</td>
-                                <td>{{$guest['email']}}</td>
-
-                            </tr>
-                            @endforeach
-                        </table>
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
                     </div>
+                    @endif
+                </div>
+
+            </div>
+        </div>
+        <div>
+            <div class="card ">
+                <div class="card-body justify-content-center">
+                    <table class="table">
+                        <tr>
+                            <th>Registered user</th>
+                            <th>Their email</th>
+
+                        </tr>
+                        @foreach ($guests as $guest)
+                        <tr>
+                            <td>{{$guest['name']}}</td>
+                            <td>{{$guest['email']}}</td>
+
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
